@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Marriage Certificate</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      margin: 40px;
+      background: #fff;
+    }
+
+    .certificate {
+      position: relative;
+      border: 6px double goldenrod;
+      padding: 60px 40px;
+      max-width: 800px;
+      height: 580px;
+      margin: auto;
+      background-color: #fff;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+      background-image: url('https://i.pinimg.com/736x/0d/d4/7d/0dd47d3b197a81b01384d3bb44f5bff9.jpg');
+      background-position-x: center; 
+      background-size: 880px 670px;
+      margin-top: 30px;
+      
+    }
+
+    .corner-img {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      width: 40%;
+      height: 50%;
+    }
+
+    h1 {
+      font-family: 'Georgia', serif;
+      text-align: center;
+      color: goldenrod;
+      font-size: 42px;
+      margin-top: -45px;
+      font-style: italic;
+    }
+
+    .subtitle {
+      margin-top: 65px;
+      text-align: center;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .names {
+      text-align: center;
+      font-size: 28px;
+      font-style: italic;
+      font-weight: bold;
+      color: rgb(130, 92, 40);
+      margin-top: 20px;
+    }
+
+    .info {
+      text-align: center;
+      font-size: 18px;
+      margin-top: 10px;
+    }
+
+    .footer {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .signature-line {
+      width: 300px;
+      margin: 40px auto 5px;
+      border-top: 1px solid #000;
+    }
+
+    .signature-label {
+      font-size: 14px;
+      color: #333;
+    }
+
+    .date-location {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #444;
+      text-align: center;
+    }
+
+    @media print {
+      .print-btn {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="certificate">
+
+
+  <h1>Marriage Certificate</h1>
+  <p class="subtitle">This is to certify that</p>
+
+  <p class="names">{{ user.bname }}</p>
+  <p class="info">and</p>
+  <p class="names">{{ user.gname }}</p>
+
+  <p class="info">were legally joined in matrimony</p>
+
+  <p class="date-location">on the {{ user.mrg_date }}</p>
+  <p class="date-location">at {{ user.place }}</p>
+
+  <p class="info">Witnessed and signed by the undersigned on this day</p>
+
+  <div class="footer">
+    <div class="signature-line"></div>
+    <p class="signature-label">Witness Signature</p>
+    <p>Emily Thompson</p>
+  </div>
+</div>
+
+<div class="print-btn" style="text-align:center; margin-top: 30px;">
+  <a href="{{ url_for('download_pdf_temp1', iid=user.id) }}">
+    <button style="padding: 10px 25px; background-color: goldenrod; color: white; border: none; font-size: 16px;">🖨️ Download PDF</button>
+  </a>
+</div>
+
+</body>
+</html>

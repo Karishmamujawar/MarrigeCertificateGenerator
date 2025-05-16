@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Marriage Certificate</title>
+  <link rel="stylesheet" href="file://{{ static_path }}/css/certificate.css"> 
+  <!-- <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@600&family=Open+Sans&display=swap" rel="stylesheet"> -->
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      text-align: center;
+      padding: 40px;
+      background: #fff;
+      color: #000;
+      
+      
+      
+    }
+
+    .certificate {
+      border: 20px solid white;
+      padding: 40px;
+      position: relative;
+      max-width: 800px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      
+       /* background-image: url('/static/mrg1.avif'); */
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .cursive {
+      font-family: 'Great Vibes', cursive;
+      font-size: 28px;
+      margin: 10px 0;
+    }
+
+    .info {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .officiated, .registrar {
+      margin-top: 20px;
+    }
+
+    .witnesses {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 60px;
+      font-size: 14px;
+    }
+
+    .corner {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background-size: cover;
+    }
+     
+    /* .certificate  .background-Img {
+        background-image: url('/static/mrg1.avif'); 
+        background-repeat: no-repeat;
+       
+     } */
+
+    .top-left { top: 0; left: 0; width: 300px; height: 350px; background-image: url('/static/corner1.webp'); }
+    /* .top-right { top: 0; right: 0; background-image: url('https://i.imgur.com/3AHrTkZ.png'); transform: scaleX(-1); }
+    .bottom-left { bottom: 0; left: 0; background-image: url('https://i.imgur.com/3AHrTkZ.png'); transform: scaleY(-1); }
+    .bottom-right { bottom: 0; right: 0; background-image: url('https://i.imgur.com/3AHrTkZ.png'); transform: scale(-1, -1); } */
+  </style> 
+</head>
+<body>
+
+<div class="certificate">
+  <div class="corner top-left" style="background-image: url('file://{{ static_path }}/corner1.webp');"></div>
+  <div class="corner top-left"></div>
+  <div class="corner top-right"></div>
+  <div class="corner bottom-left"></div>
+  <div class="corner bottom-right"></div>
+  <div class="background-Img"></div>
+
+  <h1>MARRIAGE CERTIFICATE</h1>
+  <p class="info">This certifies that</p>
+  <p class="cursive" style="font-size: 35px; color:brown;">{{user.bname}}</p>
+  <p class="info">and</p>
+  <p class="cursive" style="font-size: 35px;">{{user.gname}}</p>
+  <p class="info">were married on<br>
+  {{user.mrg_date}} at St. James Church, {{user.place}}.</p>
+
+  <div class="officiated">
+    <p>Officiated by</p>
+    <p>Rev. Michael Stewart.</p>
+  </div>
+
+  <div class="registrar">
+    <p>Derek Williams</p>
+    <p>Registrar</p>
+  </div>
+
+  <div class="witnesses">
+    <div>
+      <p>Chris Stone</p>
+      <p>Witness</p>
+    </div>
+    <div>
+      <p>Samuel Spence</p>
+      <p>Witness</p>
+    </div>
+  </div>
+</div>
+<br>
+<p><a href="{{ url_for('pdfgenerate') }}" download>Download(PDF)</a></p>
+
+</body>
+</html>

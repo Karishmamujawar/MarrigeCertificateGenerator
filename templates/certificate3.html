@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Marriage Certificate</title>
+  
+  <style>
+    body {
+      
+      text-align: center;
+      padding: 40px;
+      background: #fff;
+      color: #000;
+     
+      
+    }
+
+    .certificate {
+      border: 2px solid gray;
+      padding: 40px;
+      position: relative;
+      max-width: 800px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      
+      background-size: cover;
+      background-repeat :  no-repeat;
+      background-position: center;
+      height: 600px;
+      padding: 40px;
+      
+    
+    }
+
+    h1 {
+     
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .cursive {
+    font-style: italic;
+      font-size: 40px;
+      font-weight: 900px;
+      margin: 10px 0;
+      color: darkgreen;
+    }
+
+    .info {
+      margin: 10px 0;
+      font-size: 28px;
+     font-size: 25px;
+     justify-content: space-between;
+     display: flow-root;
+    }
+
+    .officiated, .registrar {
+      margin-top: 20px;
+      font-size: 23px;
+      color: rgb(7, 53, 144);
+      
+    }
+
+    .witnesses {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 38px;
+      font-weight: bold;
+      font-size: 23px;
+      font-family: Georgia, serif;
+    }
+
+    .corner {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background-size: cover;
+    }
+
+    .fancy-text {
+  font-family: "Sofia", sans-serif;
+  font-size: 30px;
+  font-style: oblique;
+  text-align: center;
+  color: #e8300f;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+     
+  .top-left { top: 0; left: 0; width: 350px; height: 370px; background-image: url('https://static.vecteezy.com/system/resources/thumbnails/014/500/359/small_2x/flowers-left-top-corner-frame-png.png'); } 
+  /* .top-right { top: 0; right: 0; width: 320px; height: 370px; background-image: url('https://static.vecteezy.com/system/resources/thumbnails/014/500/359/small_2x/flowers-left-top-corner-frame-png.png'); transform: scaleX(-1); } */
+  .bottom-right { bottom: 0; right: 0; width: 330px; height: 330px; background-image: url('https://static.vecteezy.com/system/resources/thumbnails/014/463/967/small_2x/flower-right-down-corner-frame-png.png'); } 
+
+    
+  </style>
+</head>
+<body>
+
+<div class="certificate">
+  
+  <div class="corner top-left"></div>
+  <div class="corner top-right"></div>
+  <div class="corner bottom-left"></div>
+  <div class="corner bottom-right"></div>
+  <div class="background-Img"></div>
+
+  <h1 class="fancy-text">MARRIAGE CERTIFICATE</h1>
+  <p class="info">This certifies that</p>
+  <p class="cursive" >{{user.bname}}</p>
+  <p class="info">and</p>
+  <p class="cursive">{{user.gname}}</p>
+  <p class="info">were married on<br><br>
+  {{user.mrg_date}} at St. James Hall, {{user.place}}.</p>
+
+  <div class="registrar">
+    <p>Officiated by</p>
+    <p>Derek Williams & Samuel Spence</p>
+  </div>
+<!-- 
+  <div class="registrar">
+    <p>Derek Williams</p>
+    <p>Registrar</p>
+  </div> -->
+
+  <!--<div class="witnesses">
+    <div>
+      <p>Chris Stone</p>
+      <p>Witness</p>
+    </div>
+     <div>
+      <p>Samuel Spence</p>
+      <p>Witness</p>
+    </div>
+  </div>-->
+</div>
+<br>
+<p><a href="{{ url_for('download_pdf_temp3', iid=user.id) }}" download>⬇️ Download PDF</a></p>
+
+</body>
+</html>

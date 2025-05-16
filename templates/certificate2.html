@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Marriage Certificate</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: #fdfdfd;
+      margin: 40px;
+      padding: 0;
+    }
+
+    .certificate {
+      border: 8px double #333;
+      padding: 50px;
+      max-width: 650px;
+      height: 550px;
+      margin: auto;
+      background-color: #fff;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8cHH1_QzW8tKbECMV8tsqGr6-0D_46R-8x-Q28vFiu1TDymSCIhiw25qXW0kLtErveI8&usqp=CAU');background-repeat: no-repeat;
+      background-position-x: center; 
+      background-size: 730px 650px;
+    }
+
+    .certificate h1 {
+      text-align: center;
+      font-size: 36px;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .certificate .details {
+      font-size: 20px;
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .certificate .details1 {
+      font-size: 20px;
+      margin-top: 30px;
+      text-align: center;
+      font-style: italic;
+      font-weight: 600px;
+    }
+
+    .certificate .names {
+      font-size: 26px;
+      font-weight: bold;
+      margin: 20px 0;
+      color: #444;
+      /* font-style: italic; */
+      font-family: "Sofia", sans-serif;
+    }
+
+    .certificate .footer {
+      margin-top: 50px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .certificate .footer .sign {
+       margin-top: 20px;
+      text-align: center;
+      flex: 1;
+    }
+
+    .certificate .footer .sign-line {
+      margin-top: 60px;
+      border-top: 1px solid #333;
+      width: 80%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+<div class="certificate">
+  <!-- <img src=" https://drive.google.com/drive/folders/1M3db9Y1SyCgoRMB6eq_sxXsuPlx2bT46" alt="Girl in a jacket"> -->
+  <!-- <div style="background-image: url('/static/mrg1.avif');background-repeat: no-repeat; max-width: 800px;max-height: 800px;"> -->
+  <h1 style="color: brown; margin-top: 36px;">Marriage Certificate</h1>
+
+  <div class="details">This certificate attests that</div>
+
+  <div class="names" style="text-align: center; color: darkcyan;font-size: 35px;">{{ user.gname }} <span>&</span> {{ user.bname }}</div>
+
+  <div class="details">were legally joined in marriage on</div>
+  <div class="names" style="text-align: center; color:blueviolet">{{ user.mrg_date }}</div>
+
+  <div class="details">at <strong>{{ user.place }}</strong></div>
+
+  <div class="details1"> This Ceremony was Witnessed and Celebrated by </div>
+
+  <div class="footer">
+    <div class="sign">
+      Witness 1<br>
+      <div class="sign-line"></div>
+    </div>
+    <!-- <div class="sign">
+      Witness 2<br>
+      <div class="sign-line"></div>
+    </div>
+    <div class="sign">
+      Official Signatory<br>
+      <div class="sign-line"></div>
+    </div> -->
+  </div>
+</div>
+<br>
+<p style="text-align: center;"><a href="{{ url_for('download_pdf_temp2', iid=user.id) }}" download>⬇️ Download PDF</a></p>
+<!-- </div> -->
+
+</body>
+</html>
+
+
+
+
+
+
+

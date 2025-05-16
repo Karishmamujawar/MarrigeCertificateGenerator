@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css' )}}"/> -->
+     <script type="text/javascript" src="{{url_for('static',filename='temp.js')}}"></script>
+    <title>Document</title>
+    <style>
+      table {
+        width: 80%;
+        margin-left: 100px;
+        margin-top: 30px;
+      }
+
+       th,td {
+        padding: 5%,10%;
+        border: 1px solid #000;
+        margin-left: 13px;
+        text-align: center;
+       }
+    </style>
+</head>
+<body>
+    
+  <h3 class='text-center mb-3' style="color:darkcyan;margin-top: 20px;">History of Certificates</h3>
+  <table>
+    <thead style="background-color: aqua;">
+      <th>Id's</th>  
+      <th>Girl Name</th>
+      <th>Boy Name</th>
+      <th>Action</th>
+      <th>Generate</th>
+      
+    </thead>
+    <tbody>
+      {% for i in datas %}
+        <tr>
+          <td>{{i.id}}</td>
+          <td>{{i.gname}}</td>
+          <td>{{i.bname}}</td>
+          <td>
+            <a href='{{url_for("edit",id=i.id)}}' class='btn btn-success'>Edit</a> 
+          <a href='{{url_for("delete",id=i.id)}}' class='btn btn-danger' onclick="return confirmDelete()">Delete</a></td>  <!--edit is from app.py i,e def edit(): shold same name-->
+          
+          <td><button onclick="toggleTemplates('{{ i.id }}')" class="btn btn-primary btn-sm">Generate</button>
+            <div id="template-btns-{{ i.id }}" style="display:none; margin-top:5px;">
+                <a href='{{url_for("temp1", id = i.id )}}'><button class="btn btn-outline-secondary btn-sm">T1</button></a>
+                <a href='{{url_for("temp2", id= i.id )}}'><button class="btn btn-outline-secondary btn-sm">T2</button></a>
+                <a href='{{url_for("temp3", id=i.id)}}'><button class="btn btn-outline-secondary btn-sm">T3</button></a>
+              </div>
+        </td>
+          </tr>
+      {%endfor%}
+    </tbody>
+  </table>
+
+
+</body>
+</html>
