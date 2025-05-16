@@ -3,6 +3,7 @@ import sqlite3
 from flask_cors import CORS
 import pdfkit
 import io
+import platform
 
 app = Flask(__name__)
 CORS(app)
@@ -14,7 +15,17 @@ def db_connection():
     con.row_factory = sqlite3.Row
     return con
 
-config = pdfkit.configuration(wkhtmltopdf=r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe')
+
+if platform.system() == 'Windows':
+    path_wkhtmltopdf = r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe'
+else:
+    path_wkhtmltopdf = '/usr/bin/wkhtmltopdf'
+
+
+config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+
+
+#config = pdfkit.configuration(wkhtmltopdf=r'C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf.exe')
 
 
 
