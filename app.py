@@ -9,6 +9,9 @@ app = Flask(__name__)
 CORS(app)
 app.secret_key = 'your_secret_key'
 
+port = int(os.environ.get("PORT", 5000))
+
+
 #connection to db
 def db_connection():
     con = sqlite3.connect('database.db')
@@ -316,25 +319,8 @@ def download_pdf_temp1(iid):
     )
 
 
-#COPY previous 
-# @app.route('/download_pdf_temp1')
-# def download_pdf_temp1():
-#     result = session.get('certi_result')
-#     print(result)
-#     if not result:
-#         return "No data found.", 400
-
-#     html = render_template('certificate1.html', user=result)
-#     options = {'enable-local-file-access': ''}
-#     pdf = pdfkit.from_string(html, False, configuration=config, options=options)
-
-#     return send_file(
-#         io.BytesIO(pdf),
-#         as_attachment=True,
-#         download_name='marriage_certificate.pdf',
-#         mimetype='application/pdf'
-#     )
 
 
-app.run(debug=True)
+app.run(host="0.0.0.0", port=port)
+#app.run(debug=True)
 
